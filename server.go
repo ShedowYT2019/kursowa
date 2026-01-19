@@ -38,7 +38,7 @@ func handleRequests(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "Лог-файл порожній або не знайдений.")
 			return
 		}
-		fmt.Fprintf(w, "--- Лог входження пристроїв (Варіант 14) ---\n%s", string(data))
+		fmt.Fprintf(w, "--- Лог входження пристроїв  ---\n%s", string(data))
 
 	case http.MethodPost:
 		// Обробка POST-запиту
@@ -50,7 +50,7 @@ func handleRequests(w http.ResponseWriter, r *http.Request) {
 		device.Timestamp = time.Now()
 
 		logEntry := fmt.Sprintf("[%s] Пристрій: %s | Тип: %s | IP: %s | Маршрутизація: %s\n",
-			device.Timestamp.Format("2006-01-02 15:04:05"),
+			device.Timestamp.Format("2007-05-15 15:04:05"),
 			device.Name, device.Type, device.IPAddress, device.RoutingType)
 
 		f, err := os.OpenFile(logFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
